@@ -391,7 +391,8 @@ async function initStore() {
     col.onSnapshot(snap => {
       clearTimeout(timer);
       for (const d of snap.docs) {
-        const data = d.data(); if (!data) continue;
+        const raw = d.data(); if (!raw) continue;
+        const data = JSON.parse(JSON.stringify(raw)); // snapshots are frozen; keep an editable copy
         if (d.id === "stats") { if (!state.stats.updatedAt || (data.updatedAt || 0) >= state.stats.updatedAt) state.stats = data; continue; }
         const mine = state.decks[d.id];
         if (!mine || (data.updatedAt || 0) >= (mine.updatedAt || 0)) state.decks[d.id] = data;
@@ -691,6 +692,9 @@ function flip() {
   const first = app.querySelector(".rate .suggest") || app.querySelector(".rate .good"); if (first) first.focus({ preventScroll: true });
 }
 function rate(r) {
+  try { rateCard(r); } catch (e) { console.error(e); toast("Couldn't record that answer. Reload the page and try again."); }
+}
+function rateCard(r) {
   const deck = state.decks[session.deckId]; if (!deck || !session.card) return;
   const i = deck.cards.findIndex(x => x.id === session.card.id); if (i < 0) return;
   deck.cards[i] = schedule(deck.cards[i], r);
