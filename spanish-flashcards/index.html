@@ -1,4 +1,4 @@
-<title>Repaso Spanish Cards</title>
+<title>Steve's Languages</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,8 @@
   --good: #188A57;
   --easy: #2B6FC9;
   --shadow: 0 1px 2px rgba(20,27,43,.06), 0 8px 28px rgba(20,27,43,.08);
-  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", "PingFang SC", "Hiragino Sans", "Noto Sans CJK SC", "Microsoft YaHei", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
   --r: 14px;
 }
 @media (prefers-color-scheme: dark) {
@@ -63,6 +63,13 @@ button { cursor: pointer; }
     conic-gradient(from 45deg, var(--accent) 0 25%, var(--sun) 0 50%, var(--accent) 0 75%, var(--sun) 0);
 }
 .brand b { font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -.02em; }
+.langs { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; }
+.langs button { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 8px 14px; display: flex; flex-direction: column; align-items: flex-start; line-height: 1.25; }
+.langs button span { font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.langs button small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.langs button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.langs select { border: 1px dashed var(--line); background: transparent; border-radius: 12px; padding: 8px 12px; color: var(--muted); }
+.reading { font-size: 18px; color: var(--accent); font-weight: 500; }
 .top-actions { display: flex; gap: 8px; align-items: center; }
 .sync { font-size: 12px; color: var(--muted); }
 
@@ -220,7 +227,7 @@ h2 { font-size: 20px; font-weight: 700; }
 
 <div class="wrap">
   <header class="top">
-    <button class="brand" id="home-link" aria-label="Repaso home"><span class="tile" aria-hidden="true"></span><b>Repaso</b></button>
+    <button class="brand" id="home-link" aria-label="Steve's Languages home"><span class="tile" aria-hidden="true"></span><b>Steve's Languages</b></button>
     <div class="top-actions">
       <span class="sync" id="sync"></span>
     </div>
@@ -286,8 +293,40 @@ const LIBRARY = [
     ["lunes","Monday","Days aren't capitalized in Spanish"],["martes","Tuesday"],["miércoles","Wednesday"],["jueves","Thursday"],["viernes","Friday"],
     ["sábado","Saturday"],["domingo","Sunday"],["hoy","today"],["mañana","tomorrow / morning"],["ayer","yesterday"],["ahora","now"],
     ["la semana","week"],["el mes","month"],["el año","year"],["¿Qué hora es?","What time is it?"]
+  ]},
+  // Chinese rows: [characters, English, note, pinyin]
+  { key: "zh-basics", lang: "zh", name: "Chinese essentials", blurb: "Greetings, pronouns and first phrases", cards: [
+    ["你好","hello","","nǐ hǎo"],["谢谢","thank you","","xièxie"],["不客气","you're welcome","","bú kèqi"],["对不起","sorry","","duìbuqǐ"],
+    ["没关系","it's OK / never mind","","méi guānxi"],["再见","goodbye","","zàijiàn"],["请","please","Also: to invite","qǐng"],
+    ["是","to be / yes","","shì"],["不是","is not / no","不 changes to bú before a 4th tone","bú shì"],["我","I / me","","wǒ"],["你","you","","nǐ"],
+    ["他","he / him","","tā"],["她","she / her","Same sound as 他","tā"],["我们","we / us","们 makes pronouns plural","wǒmen"],["好","good","","hǎo"],
+    ["很好","very good","","hěn hǎo"],["你好吗？","How are you?","","nǐ hǎo ma?"],["我叫…","My name is…","","wǒ jiào…"],
+    ["你叫什么名字？","What's your name?","","nǐ jiào shénme míngzi?"],["我不懂","I don't understand","","wǒ bù dǒng"],
+    ["多少钱？","How much is it?","","duōshao qián?"],["厕所在哪里？","Where is the bathroom?","","cèsuǒ zài nǎlǐ?"],["我要…","I want…","","wǒ yào…"],
+    ["吃","to eat","","chī"],["喝","to drink","","hē"],["水","water","","shuǐ"],["茶","tea","","chá"],["朋友","friend","","péngyou"],
+    ["中国","China","Literally: middle country","Zhōngguó"],["中文","Chinese (language)","","Zhōngwén"]
+  ]},
+  { key: "zh-time", lang: "zh", name: "Chinese numbers & time", blurb: "Counting, days and telling time", cards: [
+    ["一","one","","yī"],["二","two","","èr"],["三","three","","sān"],["四","four","","sì"],["五","five","","wǔ"],["六","six","","liù"],
+    ["七","seven","","qī"],["八","eight","","bā"],["九","nine","","jiǔ"],["十","ten","","shí"],["百","hundred","","bǎi"],["千","thousand","","qiān"],
+    ["两","two (of something)","Used before measure words: 两个人 = two people","liǎng"],["今天","today","","jīntiān"],["明天","tomorrow","","míngtiān"],
+    ["昨天","yesterday","","zuótiān"],["现在","now","","xiànzài"],["星期一","Monday","Weekdays are numbered: 星期二 = Tuesday","xīngqīyī"],
+    ["星期天","Sunday","","xīngqītiān"],["年","year","","nián"],["月","month","","yuè"],["天","day","","tiān"],["几点了？","What time is it?","","jǐ diǎn le?"]
   ]}
 ];
+
+// Languages. Card fields keep their original names: es = the word in the deck's language, reading = pinyin/kana/romanization.
+const LANGS = {
+  es: { name: "Spanish", native: "Español", voice: "es-ES", keys: "á é í ó ú ñ ü ¿ ¡", praise: "¡Muy bien!", ex: ["la biblioteca", "library", "", "False friend: la librería is a bookshop"] },
+  zh: { name: "Chinese", native: "中文", voice: "zh-CN", reading: "Pinyin", marks: "tones", praise: "很好！", ex: ["图书馆", "library", "túshūguǎn", "图书 = books, 馆 = building"] },
+  fr: { name: "French", native: "Français", voice: "fr-FR", keys: "é è ê à â ç ù û ô î ï ë œ", praise: "Très bien !", ex: ["la bibliothèque", "library", "", "False friend: la librairie is a bookshop"] },
+  it: { name: "Italian", native: "Italiano", voice: "it-IT", keys: "à è é ì ò ù", praise: "Molto bene!", ex: ["la biblioteca", "library", "", ""] },
+  de: { name: "German", native: "Deutsch", voice: "de-DE", keys: "ä ö ü ß Ä Ö Ü", praise: "Sehr gut!", ex: ["die Bibliothek", "library", "", "Plural: die Bibliotheken"] },
+  pt: { name: "Portuguese", native: "Português", voice: "pt-BR", keys: "á â ã à é ê í ó ô õ ú ç", praise: "Muito bem!", ex: ["a biblioteca", "library", "", ""] },
+  ja: { name: "Japanese", native: "日本語", voice: "ja-JP", reading: "Reading", marks: "reading", praise: "よくできました！", ex: ["図書館", "library", "としょかん", ""] },
+  ko: { name: "Korean", native: "한국어", voice: "ko-KR", reading: "Romanization", marks: "spelling", praise: "잘했어요!", ex: ["도서관", "library", "doseogwan", ""] }
+};
+const langOf = d => (d && LANGS[d.lang]) ? d.lang : "es";
 
 // ---------- helpers ----------
 const $ = (s, r = document) => r.querySelector(s);
@@ -309,14 +348,14 @@ const lsGet = (k, f) => { try { const v = localStorage.getItem(k); return v ? JS
 const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
 
 // ---------- preferences (per-device convenience) ----------
-const prefs = Object.assign({ direction: "es-en", typing: false, autoSpeak: false, newPerDay: 15 }, lsGet("repaso.prefs", {}));
+const prefs = Object.assign({ direction: "es-en", typing: false, autoSpeak: false, newPerDay: 15, lang: "es", readingFront: false }, lsGet("repaso.prefs", {}));
 const savePrefs = () => lsSet("repaso.prefs", prefs);
 
 // ---------- scheduler (Anki-style SM-2) ----------
 const LEARN_STEPS = [1 * MIN, 10 * MIN];
 const RELEARN_STEP = 10 * MIN;
-function newCard(es, en, note) {
-  return { id: uid("c"), es: es.trim(), en: en.trim(), note: (note || "").trim(), state: "new", step: 0, due: 0, ivl: 0, ease: 2.5, reps: 0, lapses: 0, seen: null };
+function newCard(es, en, note, reading) {
+  return { id: uid("c"), es: es.trim(), en: en.trim(), note: (note || "").trim(), reading: (reading || "").trim(), state: "new", step: 0, due: 0, ivl: 0, ease: 2.5, reps: 0, lapses: 0, seen: null };
 }
 // Returns the updated card for a rating (1 again, 2 hard, 3 good, 4 easy) without mutating.
 function schedule(card, r, now = Date.now()) {
@@ -398,17 +437,20 @@ async function initStore() {
     timer = setTimeout(() => { if (!state.loaded) { setSync("Still connecting…"); } }, 10000);
     col.onSnapshot(snap => {
       clearTimeout(timer);
+      let changedOpenDeck = false;
       for (const d of snap.docs) {
         const raw = d.data(); if (!raw) continue;
         const data = JSON.parse(JSON.stringify(raw)); // snapshots are frozen; keep an editable copy
-        if (d.id === "stats") { if (!state.stats.updatedAt || (data.updatedAt || 0) >= state.stats.updatedAt) state.stats = data; continue; }
+        // Only take a version that is newer than ours; the echo of our own save is skipped so open screens keep their objects.
+        if (d.id === "stats") { if (!state.stats.updatedAt || (data.updatedAt || 0) > state.stats.updatedAt) state.stats = data; continue; }
         const mine = state.decks[d.id];
-        if (!mine || (data.updatedAt || 0) >= (mine.updatedAt || 0)) state.decks[d.id] = data;
+        if (!mine || (data.updatedAt || 0) > (mine.updatedAt || 0)) { state.decks[d.id] = data; if (mine && view.name === "deck" && view.deckId === d.id) changedOpenDeck = true; }
       }
       for (const k of Object.keys(state.decks)) if (!snap.docs.some(d => d.id === k) && !writeQueue[k]) delete state.decks[k];
       const first = !state.loaded; state.loaded = true;
       if (first) setSync("Saved to your account");
-      if (first || view.name === "home") render();
+      const typingNow = document.activeElement && document.activeElement.matches("input, textarea");
+      if (first || view.name === "home" || (changedOpenDeck && !typingNow)) render();
     }, err => { clearTimeout(timer); setSync("Offline"); if (!state.loaded) useLocal("error"); });
   } catch (e) { clearTimeout(timer); useLocal("error"); }
 }
@@ -438,8 +480,8 @@ function nextCard(deck, now = Date.now()) {
   if (reviews.length) return { card: reviews[0], kind: "due" };
   return null;
 }
-function addDeck(name, rows, libKey) {
-  const deck = { id: uid("deck"), kind: "deck", name, lib: libKey || null, created: Date.now(), cards: rows.map(r => newCard(r[0], r[1], r[2])) };
+function addDeck(name, rows, libKey, lang) {
+  const deck = { id: uid("deck"), kind: "deck", name, lang: lang || "es", lib: libKey || null, created: Date.now(), cards: rows.map(r => newCard(r[0], r[1], r[2], r[3])) };
   state.decks[deck.id] = deck; persist(deck); return deck;
 }
 function logReview() {
@@ -456,33 +498,34 @@ function streak() {
 }
 
 // ---------- speech ----------
-let esVoice = null;
-function pickVoice() {
-  if (!("speechSynthesis" in window)) return;
-  const vs = speechSynthesis.getVoices();
-  esVoice = vs.find(v => /^es[-_]ES/i.test(v.lang)) || vs.find(v => /^es/i.test(v.lang)) || null;
-}
-if ("speechSynthesis" in window) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+let voices = [];
+function loadVoices() { try { voices = speechSynthesis.getVoices(); } catch {} }
+if ("speechSynthesis" in window) { loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
 const canSpeak = () => "speechSynthesis" in window;
-function speak(text) {
+function speak(text, lang = "es") {
   if (!canSpeak()) return;
   try {
     speechSynthesis.cancel();
+    const code = LANGS[lang].voice, base = code.slice(0, 2).toLowerCase();
+    const v = voices.find(x => x.lang.replace("_", "-").toLowerCase() === code.toLowerCase()) || voices.find(x => x.lang.toLowerCase().startsWith(base)) || null;
     const u = new SpeechSynthesisUtterance(text.replace(/…/g, ""));
-    u.lang = esVoice ? esVoice.lang : "es-ES"; if (esVoice) u.voice = esVoice; u.rate = 0.9;
+    u.lang = v ? v.lang : code; if (v) u.voice = v; u.rate = 0.9;
     speechSynthesis.speak(u);
   } catch {}
 }
 
 // ---------- answer checking ----------
-const norm = s => s.toLowerCase().replace(/\(.*?\)/g, "").replace(/[¿?¡!.,;:…"']/g, "").replace(/\s+/g, " ").trim();
+const norm = s => s.toLowerCase().replace(/\(.*?\)/g, "").replace(/[¿?¡!.,;:…"'？！，。、「」]/g, "").replace(/\s+/g, " ").trim();
 const plain = s => norm(s).normalize("NFD").replace(/[̀-ͯ]/g, "");
-const stripArticle = s => s.replace(/^(el|la|los|las|un|una|to|the|a|an) /, "");
-function check(input, target) {
-  const opts = target.split(/\s*[\/,]\s*/).concat([target]);
+const stripArticle = s => s.replace(/^(el|la|los|las|un|una|le|les|une|il|lo|gli|der|die|das|ein|eine|o|os|as|um|uma|to|the|a|an) /, "");
+const tight = s => s.replace(/ /g, "");
+function check(input, targets) {
+  const opts = [];
+  for (const t of targets.filter(Boolean)) opts.push(t, ...t.split(/\s*[\/,;]\s*/));
   const a = norm(input); if (!a) return "bad";
-  for (const t of opts) { if (norm(t) === a || stripArticle(norm(t)) === stripArticle(a)) return "ok"; }
-  for (const t of opts) { if (plain(t) === plain(input) || stripArticle(plain(t)) === stripArticle(plain(input))) return "close"; }
+  for (const t of opts) { const n = norm(t); if (n === a || tight(n) === tight(a) || stripArticle(n) === stripArticle(a)) return "ok"; }
+  const p = plain(input);
+  for (const t of opts) { const n = plain(t); if (n === p || tight(n) === tight(p) || stripArticle(n) === stripArticle(p)) return "close"; }
   return "bad";
 }
 
@@ -498,22 +541,35 @@ function render() {
 }
 
 function renderHome() {
-  const decks = Object.values(state.decks).sort((a,b) => a.created - b.created);
+  const all = Object.values(state.decks).sort((a,b) => a.created - b.created);
+  const lang = LANGS[prefs.lang] ? prefs.lang : "es"; const L = LANGS[lang];
+  const decks = all.filter(d => langOf(d) === lang);
+  const used = new Set(["es", "zh", lang, ...all.map(langOf)]);
+  const tabs = Object.keys(LANGS).filter(k => used.has(k));
+  const others = Object.keys(LANGS).filter(k => !used.has(k));
+  const dueIn = ds => ds.reduce((n, d) => { const c = deckCounts(d); return n + c.due + c.learn + c.newAvail; }, 0);
+  const totalDue = dueIn(decks);
   const today = state.stats.days[dayKey()] || 0;
-  const learned = decks.reduce((n, d) => n + d.cards.filter(c => c.state === "review").length, 0);
-  const totalDue = decks.reduce((n, d) => { const c = deckCounts(d); return n + c.due + c.learn + c.newAvail; }, 0);
+  const learned = all.reduce((n, d) => n + d.cards.filter(c => c.state === "review").length, 0);
   const days = []; for (let i = 13; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); days.push(state.stats.days[dayKey(d)] || 0); }
   const max = Math.max(10, ...days);
-  const owned = new Set(decks.map(d => d.lib));
-  const lib = LIBRARY.filter(l => !owned.has(l.key));
+  const owned = new Set(all.map(d => d.lib));
+  const lib = LIBRARY.filter(l => (l.lang || "es") === lang && !owned.has(l.key));
+  const headline = !state.loaded ? "Loading your decks…"
+    : totalDue ? `${totalDue} ${L.name} card${totalDue === 1 ? "" : "s"} to study today`
+    : decks.length ? `${L.praise} You're done with ${L.name} for today.` : `Start learning ${L.name}`;
 
   app.innerHTML = `
     ${state.mode === "local" && state.localReason !== "file" ? `<div class="banner">Your progress is saved in this browser only. Sign in to claude.ai to keep it across devices.</div>` : ""}
     <section style="display:flex;flex-direction:column;gap:6px">
       <span class="eyebrow">${new Date().toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}</span>
-      <h1>${!state.loaded ? "Loading your decks…" : totalDue ? `${totalDue} card${totalDue === 1 ? "" : "s"} to study today` : decks.length ? "¡Todo listo! You're done for today." : "¡Bienvenido! Pick a deck to start."}</h1>
+      <h1>${esc(headline)}</h1>
     </section>
-    <section class="stats" aria-label="Your progress">
+    <nav class="langs" aria-label="Languages">
+      ${tabs.map(k => { const n = dueIn(all.filter(d => langOf(d) === k)); return `<button data-lang="${k}" aria-pressed="${k === lang}"><span lang="${k}">${LANGS[k].native}</span><small>${LANGS[k].name}${n ? ` · ${n} to study` : ""}</small></button>`; }).join("")}
+      ${others.length ? `<select id="add-lang" aria-label="Add another language"><option value="">+ Another language</option>${others.map(k => `<option value="${k}">${LANGS[k].name} · ${LANGS[k].native}</option>`).join("")}</select>` : ""}
+    </nav>
+    <section class="stats" aria-label="Your progress, all languages">
       <div class="stat streak"><span class="n">${streak()}</span><span class="l">day streak</span></div>
       <div class="stat"><span class="n">${today}</span><span class="l">reviews today</span></div>
       <div class="stat"><span class="n">${learned}</span><span class="l">words learned</span></div>
@@ -523,40 +579,54 @@ function renderHome() {
     </section>
     ${decks.length ? `
     <section style="display:flex;flex-direction:column;gap:12px">
-      <div class="section-head"><h2>Your decks</h2><button class="btn small" id="new-deck">New empty deck</button></div>
+      <div class="section-head"><h2>Your ${L.name} decks</h2><button class="btn small" id="new-deck">New ${L.name} deck</button></div>
       <div class="decks">${decks.map(deckRow).join("")}</div>
     </section>` : ""}
     ${state.loaded && lib.length ? `
     <section style="display:flex;flex-direction:column;gap:12px">
-      <div class="section-head"><h2>${decks.length ? "Add a starter deck" : "Starter decks"}</h2>
-        ${!decks.length ? `<div style="display:flex;gap:8px"><button class="btn small" id="new-deck">Start an empty deck</button><button class="btn primary small" id="add-all">Add all ${lib.length}</button></div>` : ""}</div>
+      <div class="section-head"><h2>${decks.length ? "Add a starter deck" : `${L.name} starter decks`}</h2>
+        ${!decks.length ? `<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn small" id="new-deck">Start an empty deck</button><button class="btn primary small" id="add-all">Add all ${lib.length}</button></div>` : ""}</div>
       <div class="library">${lib.map(l => `
         <div class="lib">
           <b>${esc(l.name)}</b>
-          <span class="sample">${l.cards.slice(0, 3).map(c => esc(c[0])).join(" · ")} …</span>
+          <span class="sample" lang="${lang}">${l.cards.slice(0, 3).map(c => esc(c[0])).join(" · ")} …</span>
           <span class="deck-sub">${l.cards.length} cards · ${esc(l.blurb)}</span>
           <button class="btn small" data-lib="${l.key}">Add deck</button>
         </div>`).join("")}</div>
     </section>` : ""}
+    ${state.loaded && !decks.length && !lib.length ? `
+    <section class="empty">
+      <h2>No ${L.name} decks yet</h2>
+      <p class="muted" style="margin:0">Make a deck, then add words one at a time or paste a whole list.</p>
+      <button class="btn primary" id="new-deck" style="align-self:flex-start">New ${L.name} deck</button>
+    </section>` : ""}
     <section class="opts" aria-label="Study settings">
       <span class="eyebrow" style="margin-right:4px">Study settings</span>
       <div class="seg" role="group" aria-label="Card direction">
-        ${[["es-en","Spanish → English"],["en-es","English → Spanish"],["mixed","Mixed"]].map(([v,l]) => `<button data-dir="${v}" aria-pressed="${prefs.direction === v}">${l}</button>`).join("")}
+        ${[["es-en", `${L.name} → English`], ["en-es", `English → ${L.name}`], ["mixed", "Mixed"]].map(([v, l]) => `<button data-dir="${v}" aria-pressed="${prefs.direction === v}">${l}</button>`).join("")}
       </div>
       <label class="toggle"><input type="checkbox" id="opt-typing" ${prefs.typing ? "checked" : ""}> Type answers</label>
-      ${canSpeak() ? `<label class="toggle"><input type="checkbox" id="opt-speak" ${prefs.autoSpeak ? "checked" : ""}> Read Spanish aloud</label>` : ""}
+      ${canSpeak() ? `<label class="toggle"><input type="checkbox" id="opt-speak" ${prefs.autoSpeak ? "checked" : ""}> Read ${L.name} aloud</label>` : ""}
+      ${L.reading ? `<label class="toggle"><input type="checkbox" id="opt-reading" ${prefs.readingFront ? "checked" : ""}> Show ${L.reading.toLowerCase()} on the front</label>` : ""}
       <label class="toggle">New cards per day <input type="number" id="opt-new" min="0" max="200" value="${prefs.newPerDay}" style="width:62px;padding:3px 6px;border:1px solid var(--line);border-radius:7px;background:var(--surface)"></label>
     </section>`;
 
   app.querySelectorAll("[data-study]").forEach(b => b.onclick = () => startStudy(b.dataset.study));
-  app.querySelectorAll("[data-open]").forEach(b => b.onclick = () => { view.name = "deck"; view.deckId = b.dataset.open; view.q = ""; view.edit = null; view.confirmDelete = false; render(); window.scrollTo(0, 0); });
-  app.querySelectorAll("[data-lib]").forEach(b => b.onclick = () => { const l = LIBRARY.find(x => x.key === b.dataset.lib); addDeck(l.name, l.cards, l.key); toast(`Added “${l.name}”`); render(); });
-  const all = $("#add-all"); if (all) all.onclick = () => { lib.forEach(l => addDeck(l.name, l.cards, l.key)); toast("Added all starter decks"); render(); };
-  app.querySelectorAll("#new-deck").forEach(b => b.onclick = () => { const d = addDeck("My words", []); view.name = "deck"; view.deckId = d.id; view.q = ""; view.edit = null; view.rename = true; render(); });
+  app.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openDeck(b.dataset.open));
+  app.querySelectorAll("[data-lib]").forEach(b => b.onclick = () => { const l = LIBRARY.find(x => x.key === b.dataset.lib); addDeck(l.name, l.cards, l.key, l.lang || "es"); toast(`Added “${l.name}”`); render(); });
+  const addAll = $("#add-all"); if (addAll) addAll.onclick = () => { lib.forEach(l => addDeck(l.name, l.cards, l.key, l.lang || "es")); toast(`Added all ${L.name} starter decks`); render(); };
+  app.querySelectorAll("#new-deck").forEach(b => b.onclick = () => { const d = addDeck(`My ${L.name} words`, [], null, lang); openDeck(d.id, true); });
+  app.querySelectorAll("[data-lang]").forEach(b => b.onclick = () => { prefs.lang = b.dataset.lang; savePrefs(); render(); });
+  const al = $("#add-lang"); if (al) al.onchange = () => { if (al.value) { prefs.lang = al.value; savePrefs(); render(); } };
   app.querySelectorAll("[data-dir]").forEach(b => b.onclick = () => { prefs.direction = b.dataset.dir; savePrefs(); render(); });
   $("#opt-typing").onchange = e => { prefs.typing = e.target.checked; savePrefs(); };
   const sp = $("#opt-speak"); if (sp) sp.onchange = e => { prefs.autoSpeak = e.target.checked; savePrefs(); };
+  const rf = $("#opt-reading"); if (rf) rf.onchange = e => { prefs.readingFront = e.target.checked; savePrefs(); };
   $("#opt-new").onchange = e => { prefs.newPerDay = Math.max(0, Math.min(200, parseInt(e.target.value, 10) || 0)); savePrefs(); render(); };
+}
+function openDeck(id, rename) {
+  view.name = "deck"; view.deckId = id; view.q = ""; view.edit = null; view.confirmDelete = false; view.rename = !!rename;
+  render(); window.scrollTo(0, 0);
 }
 
 function deckRow(d) {
@@ -602,11 +672,12 @@ function advance() {
   session.front = prefs.direction === "mixed" ? (Math.random() < 0.5 ? "es" : "en") : prefs.direction.slice(0, 2);
   renderStudy();
   const stage = app.querySelector(".stage"); if (stage && !prefs.typing) stage.focus({ preventScroll: true });
-  if (session.card && prefs.autoSpeak && session.front === "es") speak(session.card.es);
+  if (session.card && prefs.autoSpeak && session.front === "es") speak(session.card.es, langOf(deck));
 }
 function renderStudy() {
   const deck = state.decks[session.deckId];
   if (!deck) { view.name = "home"; return render(); }
+  const lang = langOf(deck), L = LANGS[lang];
   const c = deckCounts(deck);
   const card = session.card;
   if (!card) {
@@ -614,7 +685,7 @@ function renderStudy() {
     app.innerHTML = `
       <div class="study-head"><button class="btn ghost small" id="back">← Decks</button><span class="deck-name">${esc(deck.name)}</span></div>
       <div class="done">
-        <span class="big">¡Muy bien!</span>
+        <span class="big" lang="${lang}">${L.praise}</span>
         <h2>${session.done ? `You reviewed ${session.done} card${session.done === 1 ? "" : "s"}.` : "Nothing due in this deck right now."}</h2>
         <p class="muted" style="margin:0">${nextLearn ? `Your next learning card is ready in ${fmtIv(nextLearn.due - Date.now())}. Stay on this screen and it will appear automatically.` : "Come back tomorrow for your next reviews."}</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
@@ -630,11 +701,14 @@ function renderStudy() {
     const m = $("#more-new"); if (m) m.onclick = () => { prefs.newPerDay += 10; savePrefs(); advance(); };
     return;
   }
-  const frontText = session.front === "es" ? card.es : card.en;
-  const backText = session.front === "es" ? card.en : card.es;
+  const targetFront = session.front === "es";
   const typing = prefs.typing;
-  const speakBtn = text => canSpeak() ? `<button class="btn ghost small speak" data-say="${esc(text)}" aria-label="Hear it in Spanish">🔊</button>` : "";
+  const speakBtn = () => canSpeak() ? `<button class="btn ghost small speak" data-say="${esc(card.es)}" aria-label="Hear it in ${L.name}">🔊</button>` : "";
+  const term = cls => `<div class="word ${cls}" lang="${lang}">${esc(card.es)}</div>`;
+  const reading = card.reading ? `<div class="reading">${esc(card.reading)}</div>` : "";
+  const english = cls => `<div class="word ${cls}">${esc(card.en)}</div>`;
   const curCls = { new: "r-new", learn: "r-learn", due: "r-due" }[session.kind];
+  const verdictText = { ok: "Correct", close: `Almost. Check the ${L.marks || "accents"}.`, bad: `You typed “${esc(session.typed)}”` };
   app.innerHTML = `
     <div class="study-head">
       <button class="btn ghost small" id="back">← ${esc(deck.name)}</button>
@@ -647,28 +721,27 @@ function renderStudy() {
     <div class="stage" tabindex="-1">
       <div class="card ${session.flipped ? "flipped" : session.fresh ? "enter" : ""}" id="card">
         <div class="face front" ${session.flipped ? 'aria-hidden="true"' : ""}>
-          <span class="lang">${session.front === "es" ? "Español" : "English"}${session.kind === "new" ? " · new" : ""}</span>
-          ${session.front === "es" ? speakBtn(card.es) : ""}
-          <div class="word">${esc(frontText)}</div>
+          <span class="lang">${targetFront ? L.native : "English"}${session.kind === "new" ? " · new" : ""}</span>
+          ${targetFront ? speakBtn() + term("") + (prefs.readingFront ? reading : "") : english("")}
           ${typing ? "" : `<span class="tap-hint">Tap the card or press space to reveal</span>`}
         </div>
         <div class="face back" ${session.flipped ? "" : 'aria-hidden="true"'}>
-          <span class="lang">${session.front === "es" ? "English" : "Español"}</span>
-          ${speakBtn(card.es)}
-          <div class="word small">${esc(frontText)}</div>
+          <span class="lang">${targetFront ? "English" : L.native}</span>
+          ${speakBtn()}
+          ${targetFront ? term("small") + reading : english("small")}
           <div class="divider"></div>
-          <div class="word">${esc(backText)}</div>
+          ${targetFront ? english("") : term("") + reading}
           ${card.note ? `<div class="note">${esc(card.note)}</div>` : ""}
-          ${session.verdict ? `<div class="verdict ${session.verdict}">${{ ok: "Correct", close: "Almost. Check the accents.", bad: `You typed “${esc(session.typed)}”` }[session.verdict]}</div>` : ""}
+          ${session.verdict ? `<div class="verdict ${session.verdict}">${verdictText[session.verdict]}</div>` : ""}
         </div>
       </div>
     </div>
     ${!session.flipped && typing ? `
       <form class="answer-row" id="answer-form" autocomplete="off">
-        <input id="answer" placeholder="${session.front === "es" ? "Type the English meaning" : "Escribe en español"}" aria-label="Your answer" autocapitalize="off" spellcheck="false">
+        <input id="answer" placeholder="${targetFront ? "Type the English meaning" : `Type in ${L.name}${L.reading ? " or " + L.reading.toLowerCase() : ""}`}" aria-label="Your answer" autocapitalize="off" spellcheck="false">
         <button class="btn primary" type="submit">Check</button>
       </form>
-      ${session.front === "en" ? `<div class="accents">${"á é í ó ú ñ ü ¿ ¡".split(" ").map(ch => `<button type="button" data-ch="${ch}">${ch}</button>`).join("")}</div>` : ""}
+      ${!targetFront && L.keys ? `<div class="accents">${L.keys.split(" ").map(ch => `<button type="button" data-ch="${ch}">${ch}</button>`).join("")}</div>` : ""}
       <button class="btn ghost small" id="skip-type" style="align-self:center">I don't know, show me</button>` : ""}
     ${!session.flipped && !typing ? `<button class="btn primary show-btn" id="show">Show answer</button>` : ""}
     ${session.flipped ? `
@@ -682,12 +755,16 @@ function renderStudy() {
 
   $("#back").onclick = goHome;
   $("#card").onclick = e => { if (e.target.closest("[data-say]")) return; if (!session.flipped && !typing) flip(); };
-  app.querySelectorAll("[data-say]").forEach(b => b.onclick = e => { e.stopPropagation(); speak(b.dataset.say); });
+  app.querySelectorAll("[data-say]").forEach(b => b.onclick = e => { e.stopPropagation(); speak(b.dataset.say, lang); });
   const show = $("#show"); if (show) show.onclick = flip;
   const f = $("#answer-form");
   if (f) {
     const inp = $("#answer"); inp.focus({ preventScroll: true });
-    f.onsubmit = e => { e.preventDefault(); session.typed = inp.value.trim(); session.verdict = session.typed ? check(session.typed, backText) : "bad"; if (!session.typed) session.typed = "(nothing)"; flip(); };
+    f.onsubmit = e => {
+      e.preventDefault(); session.typed = inp.value.trim();
+      session.verdict = session.typed ? check(session.typed, targetFront ? [card.en] : [card.es, card.reading]) : "bad";
+      if (!session.typed) session.typed = "(nothing)"; flip();
+    };
     app.querySelectorAll("[data-ch]").forEach(b => b.onclick = () => { const s = inp.selectionStart ?? inp.value.length; inp.value = inp.value.slice(0, s) + b.dataset.ch + inp.value.slice(inp.selectionEnd ?? s); inp.focus(); inp.setSelectionRange(s + 1, s + 1); });
     $("#skip-type").onclick = () => { session.typed = "(nothing)"; session.verdict = "bad"; flip(); };
   }
@@ -696,7 +773,7 @@ function renderStudy() {
 function suggestFor(v) { return v === "ok" ? 3 : v === "close" ? 2 : v === "bad" ? 1 : 0; }
 function flip() {
   session.flipped = true; session.fresh = false; renderStudy();
-  if (prefs.autoSpeak && session.front === "en") speak(session.card.es);
+  if (prefs.autoSpeak && session.front === "en") speak(session.card.es, langOf(state.decks[session.deckId]));
   const first = app.querySelector(".rate .suggest") || app.querySelector(".rate .good"); if (first) first.focus({ preventScroll: true });
 }
 function rate(r) {
@@ -729,23 +806,33 @@ window.addEventListener("keydown", e => {
 function renderDeck() {
   const deck = state.decks[view.deckId];
   if (!deck) { view.name = "home"; return render(); }
+  const lang = langOf(deck), L = LANGS[lang];
   const q = (view.q || "").toLowerCase();
-  const rows = deck.cards.filter(c => !q || (c.es + " " + c.en + " " + c.note).toLowerCase().includes(q));
+  const rows = deck.cards.filter(c => !q || [c.es, c.en, c.note, c.reading].join(" ").toLowerCase().includes(q));
   const editing = view.edit ? deck.cards.find(c => c.id === view.edit) : null;
   const status = c => c.state === "new" ? `<span class="pill new">new</span>` : c.state === "review" ? `<span class="pill review">${c.due <= Date.now() ? "due" : "in " + fmtIv(c.due - Date.now())}</span>` : `<span class="pill learning">learning</span>`;
+  const cols = L.reading ? `${L.name}, English, ${L.reading.toLowerCase()}, then an optional note` : `${L.name}, English, then an optional note`;
+  const sample = lang === "es" ? "el perro, dog\nla gata, cat (female)\ncorrer\tto run\tRegular -er verb"
+    : lang === "zh" ? "狗, dog, gǒu\n猫\tcat\tmāo\n跑步, to run, pǎobù, 跑 = run, 步 = step"
+    : `${L.ex[0]}, ${L.ex[1]}${L.reading ? ", " + L.ex[2] : ""}`;
   app.innerHTML = `
     <div class="study-head"><button class="btn ghost small" id="back">← Decks</button>
       <button class="btn primary small" id="study" ${deck.cards.length ? "" : "disabled"}>Study this deck</button></div>
     <div class="panel">
-      <div class="field"><label for="deck-name">Deck name</label><input id="deck-name" value="${esc(deck.name)}"></div>
+      <div class="grid2">
+        <div class="field"><label for="deck-name">Deck name</label><input id="deck-name" value="${esc(deck.name)}"></div>
+        <div class="field"><label for="deck-lang">Language</label>
+          <select id="deck-lang" class="search">${Object.keys(LANGS).map(k => `<option value="${k}" ${k === lang ? "selected" : ""}>${LANGS[k].name} · ${LANGS[k].native}</option>`).join("")}</select></div>
+      </div>
     </div>
     <form class="panel" id="card-form" autocomplete="off">
       <h2>${editing ? "Edit card" : "Add a card"}</h2>
       <div class="grid2">
-        <div class="field"><label for="f-es">Spanish</label><input id="f-es" required value="${esc(editing?.es)}" placeholder="la biblioteca"></div>
-        <div class="field"><label for="f-en">English</label><input id="f-en" required value="${esc(editing?.en)}" placeholder="library"></div>
+        <div class="field"><label for="f-es">${L.name}</label><input id="f-es" lang="${lang}" required value="${esc(editing?.es)}" placeholder="${esc(L.ex[0])}"></div>
+        <div class="field"><label for="f-en">English</label><input id="f-en" required value="${esc(editing?.en)}" placeholder="${esc(L.ex[1])}"></div>
       </div>
-      <div class="field"><label for="f-note">Note (optional)</label><input id="f-note" value="${esc(editing?.note)}" placeholder="False friend: la librería is a bookshop"></div>
+      ${L.reading ? `<div class="field"><label for="f-reading">${L.reading} (optional)</label><input id="f-reading" value="${esc(editing?.reading)}" placeholder="${esc(L.ex[2])}"></div>` : ""}
+      <div class="field"><label for="f-note">Note (optional)</label><input id="f-note" value="${esc(editing?.note)}" placeholder="${esc(L.ex[3] || "Anything that helps you remember it")}"></div>
       <div class="row-end">
         ${editing ? `<button type="button" class="btn ghost" id="cancel-edit">Cancel</button>` : ""}
         <button class="btn primary" type="submit">${editing ? "Save card" : "Add card"}</button>
@@ -753,15 +840,15 @@ function renderDeck() {
     </form>
     <details class="panel" id="import" ${view.importOpen ? "open" : ""}>
       <summary style="cursor:pointer;font-weight:600">Import many cards at once</summary>
-      <p class="muted" style="margin:0;font-size:13px">One card per line: Spanish, then a tab, comma or “ - ”, then English. An optional third column is the note. Works with lists pasted from a spreadsheet or Anki export.</p>
-      <div class="field"><label for="f-bulk">Cards</label><textarea id="f-bulk" placeholder="el perro, dog&#10;la gata, cat (female)&#10;correr	to run	Regular -er verb"></textarea></div>
+      <p class="muted" style="margin:0;font-size:13px">One card per line: ${esc(cols)}. Separate them with tabs or commas. Lists pasted from a spreadsheet or an Anki export work as they are.</p>
+      <div class="field"><label for="f-bulk">Cards</label><textarea id="f-bulk" lang="${lang}" placeholder="${esc(sample)}"></textarea></div>
       <div class="row-end"><button class="btn" type="button" id="do-import">Import cards</button></div>
     </details>
     <section class="panel">
       <div class="section-head"><h2>${deck.cards.length} card${deck.cards.length === 1 ? "" : "s"}</h2></div>
       ${deck.cards.length > 8 ? `<input class="search" id="search" placeholder="Search this deck" value="${esc(view.q || "")}" aria-label="Search cards">` : ""}
       ${rows.length ? `<div class="table-wrap"><table class="cards-table"><tbody>
-        ${rows.map(c => `<tr><td class="es">${esc(c.es)}</td><td>${esc(c.en)}${c.note ? `<div class="muted" style="font-size:12px">${esc(c.note)}</div>` : ""}</td><td class="st">${status(c)}</td>
+        ${rows.map(c => `<tr><td class="es" lang="${lang}">${esc(c.es)}${c.reading ? `<div class="muted" style="font-size:12px;font-weight:400">${esc(c.reading)}</div>` : ""}</td><td>${esc(c.en)}${c.note ? `<div class="muted" style="font-size:12px">${esc(c.note)}</div>` : ""}</td><td class="st">${status(c)}</td>
           <td class="act"><button class="btn ghost small" data-edit="${c.id}">Edit</button><button class="btn ghost small danger" data-del="${c.id}" aria-label="Delete ${esc(c.es)}">Delete</button></td></tr>`).join("")}
       </tbody></table></div>` : `<p class="muted" style="margin:0">${q ? "No cards match that search." : "No cards yet. Add your first one above."}</p>`}
     </section>
@@ -776,12 +863,14 @@ function renderDeck() {
   const nameIn = $("#deck-name");
   if (view.rename) { nameIn.focus(); nameIn.select(); view.rename = false; }
   nameIn.onchange = () => { const v = nameIn.value.trim(); if (v && v !== deck.name) { deck.name = v; persist(deck); toast("Renamed"); } };
+  $("#deck-lang").onchange = e => { deck.lang = e.target.value; prefs.lang = deck.lang; savePrefs(); persist(deck); toast(`Moved to ${LANGS[deck.lang].name}`); renderDeck(); };
   $("#card-form").onsubmit = e => {
     e.preventDefault();
     const es = $("#f-es").value.trim(), en = $("#f-en").value.trim(), note = $("#f-note").value.trim();
+    const reading = $("#f-reading") ? $("#f-reading").value.trim() : (editing?.reading || "");
     if (!es || !en) return;
-    if (editing) { Object.assign(editing, { es, en, note }); view.edit = null; toast("Card saved"); }
-    else { deck.cards.push(newCard(es, en, note)); toast("Card added"); }
+    if (editing) { Object.assign(editing, { es, en, note, reading }); view.edit = null; toast("Card saved"); }
+    else { deck.cards.push(newCard(es, en, note, reading)); toast("Card added"); }
     persist(deck); renderDeck(); $("#f-es").focus();
   };
   const ce = $("#cancel-edit"); if (ce) ce.onclick = () => { view.edit = null; renderDeck(); };
@@ -790,11 +879,16 @@ function renderDeck() {
     const lines = $("#f-bulk").value.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
     let n = 0;
     for (const l of lines) {
-      let parts = l.includes("\t") ? l.split("\t") : l.includes(" - ") ? l.split(" - ") : l.includes(";") ? l.split(";") : l.split(",");
+      let parts = l.includes("\t") ? l.split("\t") : l.includes(" - ") ? l.split(" - ") : l.includes(";") ? l.split(";") : l.split(/[,，]/);
       parts = parts.map(p => p.trim());
-      if (parts.length >= 2 && parts[0] && parts[1]) { deck.cards.push(newCard(parts[0], parts[1], parts.slice(2).join(", "))); n++; }
+      if (/^(spanish|english|chinese|front|term|word)$/i.test(parts[0]) && /^(english|back|meaning|translation)$/i.test(parts[1] || "")) continue; // header row
+      if (parts.length >= 2 && parts[0] && parts[1]) {
+        if (L.reading) deck.cards.push(newCard(parts[0], parts[1], parts.slice(3).join(", "), parts[2] || ""));
+        else deck.cards.push(newCard(parts[0], parts[1], parts.slice(2).join(", ")));
+        n++;
+      }
     }
-    if (!n) return toast("No cards found. Put Spanish and English on each line, separated by a comma or tab.");
+    if (!n) return toast(`No cards found. Put ${L.name} and English on each line, separated by a comma or tab.`);
     persist(deck); view.importOpen = false; toast(`Imported ${n} card${n === 1 ? "" : "s"}`); renderDeck();
   };
   const s = $("#search"); if (s) s.oninput = () => { view.q = s.value; const pos = s.selectionStart; renderDeck(); const s2 = $("#search"); s2.focus(); s2.setSelectionRange(pos, pos); };
@@ -803,7 +897,7 @@ function renderDeck() {
   const dd = $("#del-deck"); if (dd) dd.onclick = () => { view.confirmDelete = true; renderDeck(); };
   const dn = $("#del-no"); if (dn) dn.onclick = () => { view.confirmDelete = false; renderDeck(); };
   const dy = $("#del-yes"); if (dy) dy.onclick = () => { delete state.decks[deck.id]; removeDoc(deck.id); toast("Deck deleted"); goHome(); };
-  const rs = $("#reset"); if (rs) rs.onclick = () => { deck.cards = deck.cards.map(c => newCard(c.es, c.en, c.note)); persist(deck); toast("Progress reset"); renderDeck(); };
+  const rs = $("#reset"); if (rs) rs.onclick = () => { deck.cards = deck.cards.map(c => newCard(c.es, c.en, c.note, c.reading)); persist(deck); toast("Progress reset"); renderDeck(); };
 }
 
 $("#home-link").onclick = goHome;
